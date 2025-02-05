@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+    font-weight: 800;
+    font-family: Arial, sans-serif;
+    
+}
+.first {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    transition: opacity 2s ease-in-out;
+}
+.first button {
+    background: #efd3e6;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    
+}
+
+button:hover {
+    border: 2px solid white;
+}
+.second {
+    display: none;
+    widows: 100%;
+    background: url('download.jpg');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+    background-blend-mode: multiply;
+    height: 100vh;
+}
+.second1 img {
+    transform: rotate(-45deg);
+    animation: spin 6s linear infinite;
+    height: 120px;
+}
+.second1 {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50vh;
+    
+}
+.second1 img::before, .second1 img::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+.second1 img::before {
+            top: -50px;
+            left: 0;
+        }
+
+.second1 img::after {
+            top: 0;
+            left: 50px;
+        }
+
+@keyframes spin {
+            0% {
+                transform: rotate(-45deg);
+            }
+            100% {
+                transform: rotate(315deg);
+            }
+        }
+
+#text {
+    display: none;
+    
+    width: 100%;
+    
+}
+.third {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.third h1 {
+    position: absolute;
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.fade-text, .fade-text1 {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    
+}
+#text1, #text2, #text3, #text4, #text5, #text6, #text7, #text8, #text9, #text10, #text11, #text12 {
+    font-size: 80px;
+}
+@media (max-width: 560px) {
+    .fitst button {
+        padding: 20px 30px;
+    }
+    #text1, #text2, #text3, #text4, #text5, #text6, #text7, #text8, #text10, #text11, #text12 {
+        font-size: 30px;
+    }
+    #text9 {
+        font-size: 20px;
+    }
+}

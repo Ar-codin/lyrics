@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edges">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title >BABY</title>
+        
+        <link rel="icon" href="heart.png" type="image/x-icon">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        
+        <audio id="bgAudio">
+            <source src="araw.mp3" type="audio/mpeg">
+        </audio>
+        
+        
+        <div class="first" id="startDiv">
+            <button onclick="startExperience()">PLAY</button>
+        </div>
+        <div class="second" id="s2">
+            <div class="second1">
+                <img src="cherry-blossom.png">
+                <img src="flower.png">
+            </div>  
+            <div id="text">
+                <div class="third">
+                <h1 class="fade-text" id="text1">MAHIWAGA</h1>
+                <h1 class="fade-text" id="text2">pipiliin ka...</h1>
+                <h1 class="fade-text" id="text3">sa ARAW <span  id="span" style="color: red; opacity: 0; transition: opacity 1s ease-in-out;" >ARAW</span></h1>    
+                <h1 class="fade-text" id="text4">MAHIWAGA</h1>
+                <h1 class="fade-text" id="text5">ang nadarama</h1>
+                <h1 class="fade-text" id="text6">sayo'y <span  id="span1" style="color: red; opacity: 0; transition: opacity 1s ease-in-out;" >malinaw</span></h1>   
+                <h1 class="fade-text" id="text7">MAHIWAGA</h1>
+                <h1 class="fade-text" id="text8">WAG NANG MAWALA</h1>  
+                <h1 class="fade-text1" id="text9">SA ARAW ARAW (OH-OW)</h1>    
+                <h1 class="fade-text" id="text10">MAHIWAGA</h1>    
+                <h1 class="fade-text" id="text11">pipiliin ka...</h1>
+                <h1 class="fade-text" id="text12">ARAW <span  id="span2" style="color: red; opacity: 0; transition: opacity 1s ease-in-out;" >ARAW</span></h1>      
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function startExperience() {
+            let startDiv = document.getElementById("startDiv");
+            let s2 = document.getElementById("s2");
+
+            // Fade out the start button
+            startDiv.style.opacity = "0";
+            await sleep(1000);
+            startDiv.style.display = "none";
+
+            // Show text container
+            s2.style.display = "block";
+            text.style.display = "block";
+            // Play audio with user interaction
+            let audio = document.getElementById("bgAudio");
+            audio.play().catch(error => console.log("Autoplay blocked:", error));
+
+            // Start fading texts with individual timing
+            await sleep(6000); 
+            await fadeText(document.getElementById("text1"), 6000, 2000); // 2s fade-in, 5s visible
+            await fadeText(document.getElementById("text2"), 2000, 2000); // 1.5s fade-in, 4s visible
+            await fadeTextWithLastWord(document.getElementById("text3"), document.getElementById("span"), 2500, 6000, 1500);
+            await fadeText(document.getElementById("text4"), 4000, 3000);
+            await fadeText(document.getElementById("text5"), 2000, 2000);
+            await fadeTextWithLastWord(document.getElementById("text6"), document.getElementById("span1"), 2500, 6000, 1000);
+            await fadeText(document.getElementById("text7"), 2000, 2000);
+            await fadeText(document.getElementById("text8"), 2000, 2000);
+            await fadeText(document.getElementById("text9"), 2000, 6000);
+            await fadeText(document.getElementById("text10"), 2000, 2000);
+            await fadeText(document.getElementById("text11"), 2000, 2500);
+            await fadeTextWithLastWord(document.getElementById("text12"), document.getElementById("span2"), 3500, 8000, 1500);
+            await sleep(6000);
+            // Redirect after last text fades
+            window.location.href = "https://ar-codin.github.io/greetings/";
+        }
+
+        async function fadeText(element, fadeInTime, visibleTime) {
+            element.style.opacity = "1";  // Fade in
+            await sleep(visibleTime);     // Keep visible
+            element.style.opacity = "0";  // Fade out
+            await sleep(1000);            // Short delay before next text
+        }
+
+        async function fadeTextWithLastWord(element, lastWord, fadeInTime, visibleTime, lastWordDelay) {
+            element.style.opacity = "1";  // Fade in the full line
+            await sleep(lastWordDelay);   // Wait before showing last word
+            lastWord.style.opacity = "1"; // Fade in the last word
+            await sleep(visibleTime - lastWordDelay); // Keep visible
+            element.style.opacity = "0";  // Fade out whole line
+            await sleep(1000);
+        }
+    </script>
+</html>
